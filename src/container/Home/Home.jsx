@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import YoutubeComp from '../../component/YoutubeComp/YoutubeComp';
+import LifeCycleCop from '../LifeCycleComp/LifeCycleCop';
 import Product from '../Product/Product';
 class Home extends Component {
     render(){
@@ -23,9 +24,15 @@ class Home extends Component {
                 time="4.12" 
                 title="Video YAFET main bola"/>
                 <YoutubeComp /> */}
-                <p>Counter</p>
+
+                {/* <p>Counter</p>
                 <hr/>
-                <Product />
+                <Product /> */}
+
+
+                <p>Life Cycle Component</p>
+                <hr/>
+                <LifeCycleCop/>
             </div>      
         )  
         
