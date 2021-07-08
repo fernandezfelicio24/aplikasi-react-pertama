@@ -3,6 +3,24 @@ import YoutubeComp from '../../component/YoutubeComp/YoutubeComp';
 import LifeCycleCop from '../LifeCycleComp/LifeCycleCop';
 import Product from '../Product/Product';
 class Home extends Component {
+
+    state = {
+        showComponent :true
+    }
+    componentDidMount(){
+        // setTimeout(() => {
+        //     this.setState({
+        //         showComponent :false
+        //     })
+        // }, 15000)
+    
+    }
+
+
+
+
+
+
     render(){
         return(
             <div>
@@ -32,7 +50,13 @@ class Home extends Component {
 
                 <p>Life Cycle Component</p>
                 <hr/>
+                {
+                this.state.showComponent
+                ?
                 <LifeCycleCop/>
+                :null 
+                }
+        
             </div>      
         )  
         
