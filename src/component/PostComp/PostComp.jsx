@@ -2,10 +2,13 @@ import React from 'react';
 
 
 const PostComp = (props) => {
+
+    
+
     return(
         <div className="post">
         <div className="img-thumb">
-            <img src="https://placeimg.com/200/150/tech" alt=""/>
+            <img src="https://picsum.photos/id/1/200/300" alt=""/>
         </div>
         <div className="content">
             <p className="title">{props.title}</p>
