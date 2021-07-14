@@ -32,6 +32,8 @@ class Product extends Component {
     render(){
         return(
             <Fragment>
+                <p>Halaman Product</p>
+            <hr/>
             <div className="header">
                 <div className="logo">
                     <img src="https://upload.wikimedia.org/wikipedia/id/thumb/a/ad/Logo_UKSW.jpg/250px-Logo_UKSW.jpg" alt="" />

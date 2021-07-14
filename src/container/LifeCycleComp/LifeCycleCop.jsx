@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import './LifeCycleComp.css';
 class LifeCycleCop extends Component{
 
@@ -58,7 +58,12 @@ class LifeCycleCop extends Component{
     render(){
         console.log('render')
         return(
+            <Fragment>
+
+            <p>Halaman LifeCycle</p>
+            <hr/>
             <button className="btn" onClick={this.changeCount}>Component Button{this.state.count}</button>
+            </Fragment>
         )
     }
 }

@@ -1,26 +1,29 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import BlogPost from '../BlogPost/BlogPost';
-//import YoutubeComp from '../../component/YoutubeComp/YoutubeComp';
-//import LifeCycleCop from '../LifeCycleComp/LifeCycleCop';
-//import Product from '../Product/Product';
+import YoutubeComp from '../../component/YoutubeComp/YoutubeComp';
+import LifeCycleCop from '../LifeCycleComp/LifeCycleCop';
+import Product from '../Product/Product';
+import {BrowserRouter, Route, Link} from 'react-router-dom';
+import './Home.css';
 class Home extends Component {
 
     state = {
         showComponent :true
     }
-    componentDidMount(){
-        // setTimeout(() => {
-        //     this.setState({
-        //         showComponent :false
-        //     })
-        // }, 15000)
+    // componentDidMount(){
+    //     setTimeout(() => {
+    //         this.setState({
+    //             showComponent :false
+    //         })
+    //     }, 15000)
     
-    }
+    // }
 
     render(){
         return(
-            <div>
-                {/* <p>Youtube Component</p>
+            <BrowserRouter>
+            {/* <div>
+                <p>Youtube Component</p>
                 <hr/>
                 <YoutubeComp 
                 time="7.12" 
@@ -37,26 +40,39 @@ class Home extends Component {
                 <YoutubeComp 
                 time="4.12" 
                 title="Video YAFET main bola"/>
-                <YoutubeComp /> */}
+                <YoutubeComp /> 
 
-                {/* <p>Counter</p>
+                <p>Counter</p>
                 <hr/>
-                <Product /> */}
+                <Product /> 
 
 
-                {/* <p>Life Cycle Component</p>
+                <p>Life Cycle Component</p>
                 <hr/>
                 {
-                this.state.showComponent
-                ?
-                <LifeCycleCop/>
-                :null 
-                } */}
+                    this.state.showComponent
+                    ?
+                    <LifeCycleCop/>
+                    :null 
+                }
+                
 
                 <p>Blog Post</p>
                 <hr/>
                 <BlogPost/>
-            </div>      
+            </div>   */}
+            <Fragment>
+                <div className="navigation">
+                    <Link to="/" >Blog Post</Link>
+                    <Link to="/product">Product</Link>
+                    <Link to="/lifecycle">LifeCycle</Link>
+                </div>
+            <Route path="/" exact component={BlogPost}/>   
+            <Route path="/product" component={Product} />
+            <Route path="/lifecycle" component={LifeCycleCop} />
+            </Fragment>
+            
+            </BrowserRouter>
         )  
         
     }
