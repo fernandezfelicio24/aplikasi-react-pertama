@@ -1,36 +1,9 @@
 import React, {Component} from 'react';
+import Counter from './Counter';
 
 class CardProduct extends Component {
 
-    state = {
-        order: 4,
-        name: 'felicio'
-    }
 
-    handleCounterChange = (newValue) => {
-        this.props.onCounterChange(newValue);
-    }
-    //fungsi arrow function
-    handlePlus = () => {
-    this.setState({
-        order: this.state.order + 1
-    }, () => {
-        this.handleCounterChange(this.state.order);
-    })
-   
-    }
-
-    //fungsi biasa
-    handleMinus = () =>{
-        if (this.state.order > 0) {
-            this.setState({
-                order: this.state.order - 1
-            }, () => {
-                this.handleCounterChange(this.state.order);
-            })
-        } 
-        
-    }
     render(){
         return(
             
@@ -42,13 +15,7 @@ class CardProduct extends Component {
                 </div>
             <p className="product-title">Daging Babi Rica Rasa Tai plus gosih Tepung Crispy [ 1 Container ] </p>
             <p className="product-price">Rp 34.0000 </p>
-
-            <div className="counter">
-                <button className="minus" onClick={this.handleMinus}>-</button>
-                <input type="text" value={this.state.order} />
-                <button className="plus"onClick={this.handlePlus}>+</button>
-            </div>
-
+            <Counter onCounterChange={(value) => this.props.onCounterChange(value)}/>
             </div>
     
             
