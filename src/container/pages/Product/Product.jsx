@@ -1,18 +1,19 @@
 import React, {Component, Fragment} from 'react';
 import CardProduct from './CardProduct/CardProduct';
+import { connect } from 'react-redux';
 import './Product.css';
 class Product extends Component {
 
-    state = {
-        order: 4,
-        name: 'felicio'
-    }
+    // state = {
+    //     order: 4,
+    //     name: 'felicio'
+    // }
 
-    handleCounterChange = (newValue) => {
-        this.setState({
-            order : newValue
-        })
-    }
+    // handleCounterChange = (newValue) => {
+    //     this.setState({
+    //         order : newValue
+    //     })
+    // }
     //fungsi arrow function
     // handlePlus = () => {
     // this.setState({
@@ -40,12 +41,12 @@ class Product extends Component {
                 </div>
                 <div className="troley">
                     <img src="https://cdn3.iconfinder.com/data/icons/shopping-solid-icons-vol-1/64/003-512.png" alt="" />
-                    <div className="count">{this.state.order}</div>
+                    <div className="count">{this.props.order}</div>
                 </div>
             </div>
 
 
-        <CardProduct onCounterChange={(value) => this.handleCounterChange(value)} />
+        <CardProduct />
             </Fragment>
             
 
@@ -53,4 +54,9 @@ class Product extends Component {
     }
 }
 
-export default Product;
+const mapStateToProps = (state) => {
+    return {
+        order: state.totalOrder
+    }
+}
+export default connect(mapStateToProps)(Product);

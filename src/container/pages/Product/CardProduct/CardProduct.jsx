@@ -15,10 +15,8 @@ class CardProduct extends Component {
                 </div>
             <p className="product-title">Daging Babi Rica Rasa Tai plus gosih Tepung Crispy [ 1 Container ] </p>
             <p className="product-price">Rp 34.0000 </p>
-            <Counter onCounterChange={(value) => this.props.onCounterChange(value)}/>
-            </div>
-    
-            
+            <Counter/>
+            </div>    
 
         );
     }
