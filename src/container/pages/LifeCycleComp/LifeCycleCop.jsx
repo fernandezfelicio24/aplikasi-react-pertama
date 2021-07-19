@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
-import { connect } from 'react-redux';
+//import { connect } from 'react-redux';
 import './LifeCycleComp.css';
+import { RootContex } from '../../Home/Home';
 class LifeCycleCop extends Component{
 
     //Kita membuat lifecycle pertama yaitu construktor
@@ -56,18 +57,45 @@ class LifeCycleCop extends Component{
             count: this.state.count + 1
         })
     }
+    //State Management with REDUX
+    // render(){
+    //     console.log('render')
+    //     return(
+    //         <Fragment>
+
+    //         <p>Halaman LifeCycle</p>
+    //         <hr/>
+    //         <button className="btn" onClick={this.changeCount}>Component Button{this.state.count}</button>
+    //         <hr/>
+
+    //         <p>Total Order: {this.props.order}</p>
+    //         </Fragment>
+    //     )
+    // }
+
+
     render(){
         console.log('render')
         return(
-            <Fragment>
+            <RootContex.Consumer>
+                {
+                    value => {
+                        return(
+                            <Fragment>
 
-            <p>Halaman LifeCycle</p>
-            <hr/>
-            <button className="btn" onClick={this.changeCount}>Component Button{this.state.count}</button>
-            <hr/>
-
-            <p>Total Order: {this.props.order}</p>
-            </Fragment>
+                            <p>Halaman LifeCycle</p>
+                            <hr/>
+                            <button className="btn" onClick={this.changeCount}>Component Button{this.state.count}</button>
+                            <hr/>
+                
+                            <p>Total Order: {value.state.totalOrder}</p>
+                            </Fragment>
+                        )
+            
+                    }
+                }
+            </RootContex.Consumer>
+    
         )
     }
 }
@@ -78,4 +106,8 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(LifeCycleCop);
+//State Management with REDUX
+// export default connect(mapStateToProps)(LifeCycleCop);
+
+//State Management with CONTEXT API
+export default LifeCycleCop;
