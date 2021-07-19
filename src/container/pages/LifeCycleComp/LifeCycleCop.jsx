@@ -1,7 +1,8 @@
 import React, {Component, Fragment} from 'react';
+import { GlobalConsumer } from '../../../context/context';
 //import { connect } from 'react-redux';
 import './LifeCycleComp.css';
-import { RootContex } from '../../Home/Home';
+//import { RootContex } from '../../Home/Home';
 class LifeCycleCop extends Component{
 
     //Kita membuat lifecycle pertama yaitu construktor
@@ -42,7 +43,7 @@ class LifeCycleCop extends Component{
     }
     getSnapshotBeforeUpdate(prevProps, prevState){
         console.log('getSnapshotBeforeUpdate')
-         return null;
+        return null;
     }
     componentDidUpdate(prevProps, prevState, snapshot){
         console.log('componentDiUpdate')
@@ -77,26 +78,17 @@ class LifeCycleCop extends Component{
     render(){
         console.log('render')
         return(
-            <RootContex.Consumer>
-                {
-                    value => {
-                        return(
-                            <Fragment>
+                <Fragment>
 
-                            <p>Halaman LifeCycle</p>
-                            <hr/>
-                            <button className="btn" onClick={this.changeCount}>Component Button{this.state.count}</button>
-                            <hr/>
-                
-                            <p>Total Order: {value.state.totalOrder}</p>
-                            </Fragment>
-                        )
-            
-                    }
-                }
-            </RootContex.Consumer>
+                <p>Halaman LifeCycle</p>
+                <hr/>
+                <button className="btn" onClick={this.changeCount}>Component Button{this.state.count}</button>
+                <hr/>
     
-        )
+                <p>Total Order: {this.props.state.totalOrder}</p>
+                </Fragment>
+            )
+
     }
 }
 
@@ -110,4 +102,4 @@ const mapStateToProps = state => {
 // export default connect(mapStateToProps)(LifeCycleCop);
 
 //State Management with CONTEXT API
-export default LifeCycleCop;
+export default GlobalConsumer (LifeCycleCop);

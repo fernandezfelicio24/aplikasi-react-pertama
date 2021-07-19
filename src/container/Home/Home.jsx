@@ -10,10 +10,10 @@ import Product from '../pages/Product/Product';
 import DetailPost from '../pages/BlogPost/DetailPost/DetailPost';
 //Styling
 import './Home.css';
+import GlobalProvider from '../../context/context';
 
 
-export const RootContex = createContext();
-const Provider = RootContex.Provider;
+
 
 class Home extends Component {
 
@@ -30,32 +30,11 @@ class Home extends Component {
     
     // }
 
-    state = {
-        totalOrder: 0
-    }
 
-    dispatch = (action) => {
-        if (action.type === 'PLUS_ORDER') {
-            return this.setState({
-                totalOrder: this.state.totalOrder + 1
-            })
-        }
-
-        if (action.type === 'MINUS_ORDER') {
-            return this.setState({
-                totalOrder: this.state.totalOrder - 1
-            })
-        }
-    }
     render(){
         return(
             <Router>
-                <Provider value={
-                    {
-                        state: this.state,
-                        dispatch: this.dispatch
-                }
-                }>
+                
                 <Fragment>
                 <div className="navigation">
                     <Link to="/" >Blog Post</Link>
@@ -69,8 +48,6 @@ class Home extends Component {
                 <Route path="/lifecycle" component={LifeCycleCop} />
                 <Route path="/youtube-comp" component={YoutubeCompPage} />
                 </Fragment>
-                </Provider>
-    
             
             </Router>
         )  
@@ -78,4 +55,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default GlobalProvider (Home);

@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
+import { GlobalConsumer } from '../../../../context/context';
 //import {connect} from 'react-redux';
 //import ActionType from '../../../../redux/reducer/globalActionType';
-import { RootContex } from '../../../Home/Home';
+//import { RootContex } from '../../../Home/Home';
 class Counter extends Component{
     // state = {
     //     order: 4,
@@ -33,8 +34,8 @@ class Counter extends Component{
         
     // }
     render(){
-        console.log(this.props);
-        return(
+       // console.log(this.props);
+        console.log(this);
             //State Management with REDUX
             // <div className="counter">
             // <button className="minus" onClick={this.props.handleMinus}>-</button>
@@ -43,24 +44,14 @@ class Counter extends Component{
             // </div>
 
             //State Management with CONTEXT API
-            <RootContex.Consumer>
-                {
-                    value =>{
-                        console.log('value', value);
-                        return (
-                            <div className="counter">
-                            <button className="minus" onClick={()=>value.dispatch({type: 'MINUS_ORDER'})}>-</button>
-                            <input type="text" value={value.state.totalOrder} />
-                            <button className="plus"onClick={()=>value.dispatch({type: 'PLUS_ORDER'})}>+</button>
-                            </div>
-                        )
-            
-                    }
-                }
-    
-            </RootContex.Consumer>
-        )
-
+                return (
+                    <div className="counter">
+                    <button className="minus" onClick={()=>this.props.dispatch({type: 'MINUS_ORDER'})}>-</button>
+                    <input type="text" value={this.props.state.totalOrder} />
+                    <button className="plus"onClick={()=>this.props.dispatch({type: 'PLUS_ORDER'})}>+</button>
+                    </div>
+                )
+        
     }
 }
 
@@ -80,4 +71,4 @@ class Counter extends Component{
 //export default connect(mapStateToProps,mapDispatchToProps)(Counter);
 
 //State Management with CONTEXT API
-export default Counter;
+export default GlobalConsumer (Counter);
